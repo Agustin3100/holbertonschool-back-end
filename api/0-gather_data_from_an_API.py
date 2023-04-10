@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-import requests, json
-from sys import argv
 """Gather data from an API."""
+import requests
+from sys import argv
+
 
 if len(argv) == 2:
     employee_id = argv[1]
@@ -12,8 +13,6 @@ if len(argv) == 2:
 
     employee_get = requests.get(employee_info)
     todo_get = requests.get(todo_url)
-   # employee_response.raise_for_status()
-    # todo_response.raise_for_status()
 
     employee_data = employee_get.json()
     todo_data = todo_get.json()
@@ -21,8 +20,10 @@ if len(argv) == 2:
     employee_name = employee_data["name"]
     num_total_tasks = len(todo_data)
     num_done_tasks = sum(task["completed"] for task in todo_data)
-    completed_tasks = [task["title"] for task in todo_data if task["completed"]]
+    completed_tasks = [task["title"]
+                       for task in todo_data if task["completed"]]
 
-    print("Employee {} is done with tasks({}/{}):".format(employee_name, num_done_tasks, num_total_tasks))
+    print("Employee {} is done with tasks({}/{}):"
+          .format(employee_name, num_done_tasks, num_total_tasks))
     for task_title in completed_tasks:
         print("\t {}".format(task_title))
