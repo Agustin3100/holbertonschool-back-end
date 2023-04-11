@@ -24,7 +24,7 @@ if len(argv) == 2:
     # Open csv file and call writer function *
     with open(csv_name, mode='w') as csv_file:
         csv_writer = csv.writer(csv_file, delimiter=',',
-                                quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                                quotechar='"', quoting=csv.QUOTE_ALL)
 
         for line in todo_data:
             csv_writer.writerow(
