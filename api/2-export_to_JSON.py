@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Gather data from an API and export it in JSON format."""
-import requests
 import json
+import requests
 from sys import argv
 
 
