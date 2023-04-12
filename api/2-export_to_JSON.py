@@ -19,8 +19,6 @@ if len(argv) == 2:
     todo_data = todo_get.json()
 
     employee_name = employee_data["name"]
-    num_total_tasks = len(todo_data)
-    num_done_tasks = sum(task["completed"] for task in todo_data)
     completed_tasks = [{"task": task["title"], "completed": task["completed"],
                         "username": employee_name}
                        for task in todo_data]
